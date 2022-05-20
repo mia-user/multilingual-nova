@@ -14,7 +14,7 @@ import FormField from './components/FormField.vue';
 import LanguageSelector from './components/LanguageSelector.vue';
 import Tool from './components/Tool.vue';
 
-Nova.booting((Vue, router) => {
+Nova.booting((Vue) => {
     
     Vue.component('index-multilingual-nova', IndexField);
     Vue.component('detail-multilingual-nova', DetailField);
@@ -22,13 +22,7 @@ Nova.booting((Vue, router) => {
 
     Vue.component('language-selector', LanguageSelector);
 
-    router.addRoutes([
-        {
-            name: 'nova-language-tool',
-            path: '/nova-language-tool',
-            component: Tool,
-        },
-    ]);
+    Nova.inertia('NovaLanguageTool', Tool);
     
     let lang = getParameterByName('lang');
     if (lang) {

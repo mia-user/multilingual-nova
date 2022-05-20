@@ -45,12 +45,17 @@ class FieldServiceProvider extends PackageServiceProvider
 
     }
 
-
     protected function routes()
     {
         if ($this->app->routesAreCached()) {
             return;
         }
+
+        // Register nova routes
+        Nova::router()->group(function ($router) {
+          $path = '/nova-language-tool';
+          $router->get($path, fn () => inertia('NovaLanguageTool', ['basePath' => $path]));
+        });
 
         Route::middleware(['nova', Authorize::class])
             ->prefix('nova-vendor/multilingual-nova')
