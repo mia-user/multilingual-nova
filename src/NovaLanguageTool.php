@@ -3,6 +3,8 @@
 namespace Digitalcloud\MultilingualNova;
 
 use Laravel\Nova\Tool;
+use Illuminate\Http\Request;
+use Laravel\Nova\Menu\MenuSection;
 
 class NovaLanguageTool extends Tool
 {
@@ -21,9 +23,12 @@ class NovaLanguageTool extends Tool
      *
      * @return \Illuminate\View\View
      */
-    public function renderNavigation()
+    public function menu(Request $request)
     {
-        return view('nova-language-tool::navigation');
+        //return view('nova-language-tool::navigation');
+        return MenuSection::make(__('Language'))
+            ->path('/nova-language-tool')
+            ->icon('adjustments');
     }
 
 }
