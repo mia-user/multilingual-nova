@@ -32,16 +32,17 @@ export default {
     data: function () {
         return {
             initialLoading: true,
-            currentLocal: Nova.config('currentLocal') || 'de',
-            locals: Nova.config('locals') || [],
+            currentLocal: window.Nova.config('currentLocal'),
+            locals: window.Nova.config('locals'),
         }
     },
     methods: {
         changeLocal() {
-            window.location = Nova.config.base + "/nova-language-tool?lang=ar" + this.currentLocal;
+            window.location = window.Nova.config('base') + "/nova-language-tool?lang=" + this.currentLocal;
         },
 
         async initializeComponent() {
+            console.log(this.locals)
             await this.getCurrentLocal()
 
             this.initialLoading = false
