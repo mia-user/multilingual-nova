@@ -32,8 +32,8 @@ export default {
     data: function () {
         return {
             initialLoading: true,
-            currentLocal: window.config.currentLocal,
-            locals: window.config.locals
+            currentLocal: Nova.config('currentLocal') || 'de',
+            locals: Nova.config('locals') || [],
         }
     },
     methods: {
