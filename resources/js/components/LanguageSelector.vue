@@ -21,7 +21,11 @@ export default {
     },
     methods: {
         changeLocal() {
-            window.location = this.replaceUrlParam(window.location.href, 'lang', this.currentLocal);
+            //window.location = this.replaceUrlParam(window.location.href, 'lang', this.currentLocal);
+            Nova.request().get('/nova-vendor/multilingual-nova/set-local/' + this.currentLocal)
+                .then(({ data }) => {
+                    window.location.reload()
+                })
         },
 
         async initializeComponent() {

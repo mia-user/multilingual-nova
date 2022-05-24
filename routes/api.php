@@ -15,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('set-local/{locale}', function ($locale) {
+  app()->setLocale($locale);
+  session()->put('locale', $locale);
+  return true;
+});
 Route::get('current-local', LanguageCurrentController::class);
 Route::delete('remove-local/{locale}', LanguageDeleteController::class);

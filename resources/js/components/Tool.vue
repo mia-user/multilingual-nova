@@ -38,7 +38,11 @@ export default {
     },
     methods: {
         changeLocal() {
-            window.location = window.Nova.config('base') + "/nova-language-tool?lang=" + this.currentLocal;
+            //window.location = window.Nova.config('base') + "/nova-language-tool?lang=" + this.currentLocal;
+            Nova.request().get('/nova-vendor/multilingual-nova/set-local/' + this.currentLocal)
+                .then(({ data }) => {
+                    window.location.reload()
+                })
         },
 
         async initializeComponent() {
