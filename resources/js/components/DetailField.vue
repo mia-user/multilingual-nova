@@ -1,13 +1,13 @@
 <template>
-    <panel-item :field="field">
-        <div slot="value">
-            <language-u-i
-                    :field="field"
-                    v-on:change="redirect"
-                    v-on:delete="deleteLocale"
-            />
-        </div>
-    </panel-item>
+  <PanelItem :index="index" :field="field">
+   <template #value>
+      <LanguageUI
+              :field="field"
+              v-on:change="redirect"
+              v-on:delete="deleteLocale"
+      />
+    </template>
+  </PanelItem>
 </template>
 
 <script>
@@ -15,7 +15,7 @@
     import {global} from '../mixin/global'
 
     export default {
-        props: ["resource", "resourceName", "resourceId", "field"],
+        props: ["index", "resource", "resourceName", "resourceId", "field"],
         mixins: [global],
         components: {
             LanguageUI

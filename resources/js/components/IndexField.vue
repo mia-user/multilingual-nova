@@ -14,7 +14,6 @@
             LanguageUI
         },
         mounted() {
-            console.log(this.field)
             if (this.field.value.style == 'list' || (this.field.value.style == 'mix' && this.field.value.locales.length > this.field.value.convert_to_list_after)) {
                 let locales = this.field.value.locales;
                 locales.map(function (item) {

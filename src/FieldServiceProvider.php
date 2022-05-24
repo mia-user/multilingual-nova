@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Nova\Nova;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\Facades\Session;
 
 class FieldServiceProvider extends PackageServiceProvider
 {
@@ -25,12 +26,13 @@ class FieldServiceProvider extends PackageServiceProvider
     public function bootingPackage()
     {
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nova-language-tool');
-
+        //$this->loadViewsFrom(__DIR__ . '/../resources/views', 'nova-language-tool');
+        
         $lang = request('lang', request()->header('lang'));
 
         if ($lang) {
-            app()->setLocale($lang);
+          app()->setLocale($lang);
+          session()->put('locale', $lang);
         }
 
         Nova::serving(function () {

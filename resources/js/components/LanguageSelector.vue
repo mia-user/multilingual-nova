@@ -1,6 +1,6 @@
 <template>
     <div class="p-3">
-        <select v-model="currentLocal"  class="w-full form-control form-select"
+        <select v-model="currentLocal"  class="w-full form-control form-select-bordered"
                 v-on:change="changeLocal">
             <option v-for="(value, key) in locals" :key="value" :value="key">
                 {{ value }}

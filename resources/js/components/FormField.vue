@@ -1,6 +1,6 @@
 <template>
-  <default-field :field="field">
-    <template slot="field">
+  <DefaultField :field="field" :showHelpText="showHelpText" :errors="errors">
+    <template #field>
       <div v-if="this.field.value.style==='button' || (this.field.value.style==='mix' && locals.length <= this.field.value.convert_to_list_after)">
                 <span v-for="local in locals" :key="local.value" class=" mb-2 inline-flex">
                     <a :title=" (local.translated?'Translated':'Untranslated')+' Language'"
@@ -13,14 +13,14 @@
       </div>
 
       <div v-if="this.field.value.style==='list' || (this.field.value.style==='mix' && locals.length > this.field.value.convert_to_list_after)">
-        <select :id="field.name" v-model="currentLocal" class="w-full form-control form-select"
+        <select :id="field.name" v-model="currentLocal" class="w-full form-control form-select form-select-bordered"
                 :class="errorClasses" :placeholder="field.name" v-on:change="changeLocal">
           <option v-for="local in locals" :key="local.label" :value="local.value">{{ local.label }}</option>
         </select>
       </div>
 
     </template>
-  </default-field>
+  </DefaultField>
 </template>
 
 <script>

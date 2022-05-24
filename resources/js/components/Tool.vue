@@ -8,7 +8,7 @@
                     <label class="inline-block text-80 pt-2 leading-tight" for="language">{{__('Select Language')}}</label>
                 </div>
                 <div class="py-6 px-8 w-1/2">
-                    <select v-model="currentLocal" id="language"  dusk="language"  :placeholder="__('Select Language')" class="w-full form-control form-select">
+                    <select v-model="currentLocal" id="language"  dusk="language"  :placeholder="__('Select Language')" class="w-full form-control form-select form-select-bordered">
                         <option v-for="(value, key) in locals" :key="value" :value="key">
                             {{ value }}
                         </option>
@@ -29,7 +29,7 @@
 
 export default {
 
-    data: function () {
+    data() {
         return {
             initialLoading: true,
             currentLocal: window.Nova.config('currentLocal'),
@@ -42,7 +42,6 @@ export default {
         },
 
         async initializeComponent() {
-            console.log(this.locals)
             await this.getCurrentLocal()
 
             this.initialLoading = false

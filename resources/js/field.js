@@ -12,17 +12,16 @@ import IndexField from './components/IndexField.vue';
 import DetailField from './components/DetailField.vue';
 import FormField from './components/FormField.vue';
 import LanguageSelector from './components/LanguageSelector.vue';
-import Tool from './components/Tool.vue';
 
 Nova.booting((Vue) => {
+
+    Nova.inertia('NovaLanguageTool', require('./components/Tool').default);
     
-    Vue.component('index-multilingual-nova', IndexField);
-    Vue.component('detail-multilingual-nova', DetailField);
-    Vue.component('form-multilingual-nova', FormField);
+    Vue.component('index-multilingual-nova', require('./components/IndexField').default);
+    Vue.component('detail-multilingual-nova', require('./components/DetailField').default);
+    Vue.component('form-multilingual-nova', require('./components/FormField').default);
 
-    Vue.component('language-selector', LanguageSelector);
-
-    Nova.inertia('NovaLanguageTool', Tool);
+    Vue.component('language-selector', require('./components/LanguageSelector').default);
     
     let lang = getParameterByName('lang');
     if (lang) {

@@ -12,7 +12,7 @@
     </div>
 
     <div v-if="this.field.value.style=='list' || (this.field.value.style=='mix' && this.field.value.locales.length > this.field.value.convert_to_list_after)">
-      <select :id="field.name" v-model="selectedLocale" class="w-full form-control form-select"
+      <select :id="field.name" v-model="selectedLocale" class="w-full form-control form-select form-select-bordered"
               :class="errorClasses" :placeholder="field.name" v-on:change="$emit('change', selectedLocale)">
         <option v-for="local in this.field.value.locales" :key="local.value" :value="local.value">{{ local.label }}</option>
       </select>
