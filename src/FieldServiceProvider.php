@@ -32,7 +32,7 @@ class FieldServiceProvider extends PackageServiceProvider
 
         if ($lang) {
           app()->setLocale($lang);
-          session()->put('locale', $lang);
+          session()->put('lang', $lang);
         }
 
         Nova::serving(function () {
