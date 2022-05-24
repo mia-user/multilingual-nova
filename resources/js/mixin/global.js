@@ -2,7 +2,7 @@ export const global = {
     methods: {
         redirect(locale) {
             //window.location = this.replaceUrlParam(this.field.url + '/resources/' + this.resourceName + "/" + this.field.value.id + "/edit", 'lang', locale);
-            Nova.request().get('/nova-vendor/multilingual-nova/set-local/' + this.currentLocal)
+            Nova.request().get('/nova-vendor/multilingual-nova/set-local/' + locale)
             .then(({ data }) => {
               window.location = this.field.url + '/resources/' + this.resourceName + "/" + this.field.value.id + "/edit";
             })
@@ -21,7 +21,11 @@ export const global = {
         },
 
         changeLocal() {
-            window.location = this.replaceUrlParam(window.location.href, 'lang', this.currentLocal);
+            //window.location = this.replaceUrlParam(window.location.href, 'lang', this.currentLocal);
+            Nova.request().get('/nova-vendor/multilingual-nova/set-local/' + this.currentLocal)
+                .then(({ data }) => {
+                    window.location.reload()
+                })
         },
 
         localClicked(local) {
@@ -72,7 +76,11 @@ export const global = {
                 )
                 .then((response) => {
                     if (response.status === 200 && response.statusText === 'OK') {
-                        window.location = this.replaceUrlParam(window.location.href, 'lang', locale);
+                        //window.location = this.replaceUrlParam(window.location.href, 'lang', locale);
+                        Nova.request().get('/nova-vendor/multilingual-nova/set-local/' + locale)
+                        .then(({ data }) => {
+                            window.location.reload()
+                        })
                     }
                 });
         }
