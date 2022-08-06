@@ -32,11 +32,19 @@ export const global = {
             if(this.isEditing) {
                 if(confirm('Are you sure you want to leave the page without saving?')) {
                     this.currentLocal = local;
-                    window.location = this.replaceUrlParam(window.location.href, 'lang', this.currentLocal);
+                    Nova.request().get('/nova-vendor/multilingual-nova/set-local/' + this.currentLocal)
+                    .then(({ data }) => {
+                        window.location.reload()
+                    })
+                    //window.location = this.replaceUrlParam(window.location.href, 'lang', this.currentLocal);
                 }
             } else {
                 this.currentLocal = local;
-                window.location = this.replaceUrlParam(window.location.href, 'lang', this.currentLocal);
+                Nova.request().get('/nova-vendor/multilingual-nova/set-local/' + this.currentLocal)
+                .then(({ data }) => {
+                    window.location.reload()
+                })
+                //window.location = this.replaceUrlParam(window.location.href, 'lang', this.currentLocal);
             }
         },
         /*
